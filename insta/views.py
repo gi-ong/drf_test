@@ -1,6 +1,13 @@
 from .models import Post 
 from rest_framework.viewsets import ModelViewSet
 from .serializers import PostSerializer
+from rest_framework import generics
+
+
+class PublicPostListAPIView(generics.ListCreateAPIView):
+    queryset = Post.objects.all()
+    serializer_class = PostSerializer
+
 
 
 class PostViewSet(ModelViewSet):
